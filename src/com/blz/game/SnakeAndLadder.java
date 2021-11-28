@@ -1,5 +1,4 @@
 package com.blz.game;
-
 public class SnakeAndLadder {
     public static final int START_POSITION = 0;
     public static final int IS_SNAKE = 1;
@@ -8,11 +7,13 @@ public class SnakeAndLadder {
 
     static int playerPosition = 0;
     static int diceNumber = 0;
+     static int totalDiceRoll=0;
 
     public static void setPlayerMoves() {
         while (playerPosition < 100) {
             diceNumber = (int) ((Math.random() * 10 % 6) + 1);
             int option = (int) ((Math.random() * 10 % 3) + 1);
+
 
             if (option == IS_SNAKE) {
                 playerPosition -= diceNumber;
@@ -29,6 +30,7 @@ public class SnakeAndLadder {
             }else if(playerPosition>100){
                 playerPosition -= diceNumber;
             }
+            totalDiceRoll++;
             System.out.println("Player position: " + playerPosition);
         }
     }
@@ -37,9 +39,11 @@ public class SnakeAndLadder {
             setPlayerMoves();
         }
      }
+
     public static void main(String[] args) {
         System.out.println("Welcome to Snake And Ladder Game");
         playUntilWin();
-        System.out.println("Player has won");
+        System.out.println("Player has won" ) ;
+        System.out.println("Total dice roll: "+totalDiceRoll);
     }
 }
